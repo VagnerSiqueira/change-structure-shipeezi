@@ -10,7 +10,13 @@ function getFileNameToCreateFolderAndMove(
   patternNameFile,
 ) {
   const pathToCreate = path.resolve(relativePathToCreate);
-  const files = fs.readdirSync(pathToCreate);
+  let files;
+  try {
+    files = fs.readdirSync(pathToCreate);
+  } catch (error) {
+    console.log(error);
+    throw new Error(error.message);
+  }
   files.forEach((file) => {
     if (!file.includes('.ts')) return;
 
