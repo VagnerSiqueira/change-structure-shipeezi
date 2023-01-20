@@ -3,7 +3,7 @@
 const program = require('commander');
 const inquirer = require('inquirer');
 const packageJson = require('./package.json');
-const reorganizeStructure = require('./dist/main.js')
+const reorganizeStructure = require('./dist/main.js');
 
 program.version(packageJson.version);
 
@@ -46,7 +46,7 @@ program.command('init')
                 validate: (value) => value === 'y' || value === 'n' ? true : 'Type "y" or "n" !'
             }
         ])
-        console.log(answers)
+
         controller = answers.controller;
         service = answers.controller;
         repositorie = answers.repositorie;
