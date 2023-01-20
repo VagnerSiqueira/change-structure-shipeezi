@@ -48,7 +48,7 @@ program.command('init')
         ])
 
         controller = answers.controller;
-        service = answers.controller;
+        service = answers.service;
         repositorie = answers.repositorie;
         entitie = answers.entitie;
       
