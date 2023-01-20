@@ -1,4 +1,5 @@
 const path = require('path');
+const fsx = require('fs-extra');
 
 function moveFileToNewFolder(
   oldPath,
