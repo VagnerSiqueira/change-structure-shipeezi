@@ -2,10 +2,13 @@
   "name": "change-structure-shipeezi",
   "version": "1.0.0",
   "description": "This CLI is used by an excellent company to change their old structure to a new standard adopted by them",
-  "main": "main.js",
+  "main": "./dist/main.js",
   "types": "dist/main.d.ts",
   "scripts": {
     "build": "tsc"
+  },
+  "bin": {
+    "refactor": "index.js"
   },
   "repository": {
     "type": "git",
