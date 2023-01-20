@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "This CLI is used by an excellent company to change their old structure to a new standard adopted by them",
   "main": "main.js",
+  "types": "dist/main.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
