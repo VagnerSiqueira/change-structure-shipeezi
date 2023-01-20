@@ -1,0 +1,19 @@
+{
+  "name": "change-structure-shipeezi",
+  "version": "1.0.0",
+  "description": "This CLI is used by an excellent company to change their old structure to a new standard adopted by them",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VagnerSiqueira/change-structure-shipeezi.git"
+  },
+  "author": "vagnersiqueirajr <vagner.junior@shipeezi.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VagnerSiqueira/change-structure-shipeezi/issues"
+  },
+  "homepage": "https://github.com/VagnerSiqueira/change-structure-shipeezi#readme"
+}
