@@ -1,7 +1,7 @@
-import * as path from 'path';
-import * as fsx from 'fs-extra';
+const path = require('path');
+const fsx = require('fs-extra');
 
-export function removeFolders(pathFolder) {
+function removeFolders(pathFolder) {
   try {
     fsx.removeSync(path.resolve(pathFolder));
 
@@ -11,3 +11,5 @@ export function removeFolders(pathFolder) {
     throw new Error(error.message);
   }
 }
+
+module.exports = removeFolders;

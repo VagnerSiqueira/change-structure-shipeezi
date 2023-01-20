@@ -1,9 +1,9 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import { formatedNameToUseInFolderAndFile } from '../methods-format-name/formated-name-to-use-in-folder-and-file';
-import { moveFileToNewFolder } from './move-file-to-new-folder';
+const fs = require('fs');
+const path = require('path');
+const formatedNameToUseInFolderAndFile = require('../methods-format-name/formated-name-to-use-in-folder-and-file');
+const moveFileToNewFolder = require( './move-file-to-new-folder');
 
-export function moveControllersAndRename(controllerPath, routesPath) {
+function moveControllersAndRename(controllerPath, routesPath) {
   try {
     const filesInControllerPath = fs.readdirSync(path.resolve(controllerPath));
     const controllers = [];
@@ -37,3 +37,5 @@ export function moveControllersAndRename(controllerPath, routesPath) {
     throw new Error(error.message);
   }
 }
+
+module.exports = moveControllersAndRename;

@@ -1,7 +1,7 @@
-import * as fs from 'fs';
-import * as path from 'path';
+const fs = require('fs');
+const path = require('path');
 
-export function createFolders(folderName, relativePath) {
+function createFolders(folderName, relativePath) {
   try {
     const relativePathToCreate = path.resolve(relativePath);
 
@@ -14,3 +14,5 @@ export function createFolders(folderName, relativePath) {
     throw new Error(`Create folder ${folderName} failed`);
   }
 }
+
+module.exports = createFolders;

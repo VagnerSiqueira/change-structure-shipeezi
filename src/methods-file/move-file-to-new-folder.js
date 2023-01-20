@@ -1,7 +1,6 @@
-import * as path from 'path';
-import * as fsx from 'fs-extra';
+const path = require('path');
 
-export function moveFileToNewFolder(
+function moveFileToNewFolder(
   oldPath,
   newPath,
   forceError = true,
@@ -17,3 +16,5 @@ export function moveFileToNewFolder(
     }
   }
 }
+
+module.exports = moveFileToNewFolder;

@@ -1,6 +1,6 @@
-import { removeDotToAddDash } from "./remove-dot-to-add-dash";
+const removeDotToAddDash = require('./remove-dot-to-add-dash')
 
-export function formatedNameToUseInFolderAndFile(
+function formatedNameToUseInFolderAndFile(
   fileName,
   extensionNameWithoutDot,
 ) {
@@ -55,3 +55,5 @@ export function formatedNameToUseInFolderAndFile(
     fileWithoutExtensionName: fileFormated,
   };
 }
+
+module.exports = formatedNameToUseInFolderAndFile;

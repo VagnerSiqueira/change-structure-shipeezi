@@ -1,8 +1,8 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import * as child from 'child_process';
+const fs = require('fs');
+const path = require('path');
+const child = require('child_process');
 
-export function createModuleInFolderRoutes(pathRoutes) {
+function createModuleInFolderRoutes(pathRoutes) {
   const folders = fs.readdirSync(path.resolve(pathRoutes));
 
   folders.forEach((folder) => {
@@ -13,3 +13,5 @@ export function createModuleInFolderRoutes(pathRoutes) {
     }
   });
 }
+
+module.exports = createModuleInFolderRoutes;

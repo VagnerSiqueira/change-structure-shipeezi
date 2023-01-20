@@ -1,6 +1,6 @@
-import * as fs from 'fs';
+const fs = require('fs');
 
-export function renameFile(oldPathWithFileName, newPathWithFileName) {
+function renameFile(oldPathWithFileName, newPathWithFileName) {
   try {
     fs.renameSync(oldPathWithFileName, newPathWithFileName);
     console.log(`Renamed file ${newPathWithFileName} successfully`)
@@ -8,3 +8,5 @@ export function renameFile(oldPathWithFileName, newPathWithFileName) {
     throw new Error(error.message);
   }
 }
+
+module.exports = renameFile

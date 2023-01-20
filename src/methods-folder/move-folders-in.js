@@ -1,8 +1,8 @@
-import * as path from 'path'
-import * as fs from 'fs';
-import * as fsx from 'fs-extra';
+const fs = require('fs');
+const path = require('path');
+const fsx = require('fs-extra');
 
-export function moveFoldersIn(pathFoldersToMove, newPath) {
+function moveFoldersIn(pathFoldersToMove, newPath) {
   try {
     const pathFoldersRelative = path.resolve(pathFoldersToMove);
 
@@ -21,3 +21,5 @@ export function moveFoldersIn(pathFoldersToMove, newPath) {
     throw new Error(error.message);
   }
 }
+
+module.exports = moveFoldersIn;

@@ -2,8 +2,8 @@
 
 const program = require('commander');
 const inquirer = require('inquirer');
-const packageJson = require('./package.json');
-const reorganizeStructure = require('./dist/main.js');
+const packageJson = require('../package.json');
+const reorganizeStructure = require('./main.js');
 
 program.version(packageJson.version);
 

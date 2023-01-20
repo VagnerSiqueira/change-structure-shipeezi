@@ -1,6 +1,8 @@
-import * as child from 'child_process';
+const child = require('child_process');
 
-export function installDependencies() {
+function installDependencies() {
   child.execSync('yarn add @nestjs/schematics -D');
   child.execSync('yarn add fs-extra');
 }
+
+module.exports = installDependencies

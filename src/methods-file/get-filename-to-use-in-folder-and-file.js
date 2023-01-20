@@ -1,11 +1,11 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import { createFolders } from '../methods-folder/create-folder';
-import { formatedNameToUseInFolderAndFile } from '../methods-format-name/formated-name-to-use-in-folder-and-file';
-import { moveFileToNewFolder } from './move-file-to-new-folder';
-import { renameFile } from './rename-file';
+const fs = require('fs');
+const path = require('path');
+const createFolders = require('../methods-folder/create-folder')
+const formatedNameToUseInFolderAndFile = require('../methods-format-name/formated-name-to-use-in-folder-and-file')
+const moveFileToNewFolder = require('./move-file-to-new-folder')
+const renameFile = require('./rename-file')
 
-export function getFileNameToCreateFolderAndMove(
+function getFileNameToCreateFolderAndMove(
   relativePathToCreate,
   patternNameFile,
 ) {
@@ -37,3 +37,5 @@ export function getFileNameToCreateFolderAndMove(
     }
   });
 }
+
+module.exports = getFileNameToCreateFolderAndMove;

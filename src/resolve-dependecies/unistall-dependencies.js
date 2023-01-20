@@ -1,5 +1,7 @@
-import * as child from 'child_process';
+const child = require('child_process');
 
-export function uninstallDepedencies() {
+function uninstallDepedencies() {
   child.execSync('yarn remove fs-extra');
 }
+
+module.exports = uninstallDepedencies;
