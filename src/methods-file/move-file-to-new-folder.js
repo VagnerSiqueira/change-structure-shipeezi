@@ -2,8 +2,8 @@ import * as path from 'path';
 import * as fsx from 'fs-extra';
 
 export function moveFileToNewFolder(
-  oldPath: string,
-  newPath: string,
+  oldPath,
+  newPath,
   forceError = true,
 ) {
   try {

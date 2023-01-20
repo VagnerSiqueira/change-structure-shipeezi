@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as child from 'child_process';
 
-export function createModuleInFolderRoutes(pathRoutes: string) {
+export function createModuleInFolderRoutes(pathRoutes) {
   const folders = fs.readdirSync(path.resolve(pathRoutes));
 
   folders.forEach((folder) => {

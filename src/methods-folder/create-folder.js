@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-export function createFolders(folderName: string, relativePath: string) {
+export function createFolders(folderName, relativePath) {
   try {
     const relativePathToCreate = path.resolve(relativePath);
 

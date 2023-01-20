@@ -1,4 +1,4 @@
-export function removeDotToAddDash(name: string) {
+export function removeDotToAddDash(name) {
   if (!name.includes('-')) {
     return name.replace(/\./gi, '-');
   }

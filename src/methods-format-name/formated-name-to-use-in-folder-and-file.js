@@ -1,16 +1,15 @@
-import { ReturnToFormatName } from "../types/return-to-format-name.interface";
 import { removeDotToAddDash } from "./remove-dot-to-add-dash";
 
 export function formatedNameToUseInFolderAndFile(
-  fileName: string,
-  extensionNameWithoutDot?: string,
-): ReturnToFormatName | undefined{
+  fileName,
+  extensionNameWithoutDot,
+) {
   const fileNameToString = fileName.toString();
-  let indexStartExtensionName: number;
-  let indexEndExtensioName: number;
+  let indexStartExtensionName;
+  let indexEndExtensioName;
   let fileNameWithOutExtension = fileNameToString.replace('.ts', '');
-  let fileFormated: string;
-  let finalNameFile: string;
+  let fileFormated;
+  let finalNameFile;
 
   if (fileNameWithOutExtension.includes('module')) return;
 

@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fsx from 'fs-extra';
 
-export function removeFolders(pathFolder: string) {
+export function removeFolders(pathFolder) {
   try {
     fsx.removeSync(path.resolve(pathFolder));
 

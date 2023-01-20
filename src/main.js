@@ -8,7 +8,7 @@ import { uninstallDepedencies } from "./resolve-dependecies/unistall-dependencie
 import { moveControllersAndRename } from "./methods-file/move-controllers-and-rename"
 import { createModuleInFolderRoutes } from "./methods-file/create-module-in-folders-routes";
 
-function reorganizeStructure(folderNameController: string, folderNameService: string, folderNameRepositories: string, folderNameEntities: string) {
+function reorganizeStructure(folderNameController, folderNameService, folderNameRepositories, folderNameEntities) {
   installDependencies();
   createFolders('routes', 'src');
   getFileNameToCreateFolderAndMove(`src/${folderNameRepositories}/${folderNameEntities}`);
