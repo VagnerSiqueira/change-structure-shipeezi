@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reorganizeStructure = void 0;
 const get_filename_to_use_in_folder_and_file_1 = require("./methods-file/get-filename-to-use-in-folder-and-file");
 const move_file_to_new_folder_1 = require("./methods-file/move-file-to-new-folder");
 const create_folder_1 = require("./methods-folder/create-folder");
@@ -26,4 +25,4 @@ function reorganizeStructure(folderNameController, folderNameService, folderName
     (0, create_module_in_folders_routes_1.createModuleInFolderRoutes)('src/routes');
     (0, unistall_dependencies_1.uninstallDepedencies)();
 }
-exports.reorganizeStructure = reorganizeStructure;
+exports.default = reorganizeStructure;

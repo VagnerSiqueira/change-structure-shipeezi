@@ -1,20 +1,17 @@
 #!/usr/bin/env node
 
-const program = require('commander');
-const inquirer = require('inquirer');
-const packageJson = require('./package.json');
-const reorganizeStructure = require('./dist/main.js');
+import program from 'commander';
+import * as inquirer  from 'inquirer';
+import reorganizeStructure from './main';
 
-program.version(packageJson.version);
-
-let controller;
-let service;
-let repositorie;
-let entitie;
+let controller: string;
+let service: string;
+let repositorie: string;
+let entitie: string;
 
 program.command('init')
     .action(async () => {
-        const answers = await inquirer.prompt([
+        const answers = await inquirer.default.prompt([
             {
                 type: 'input',
                 name: 'controller',
@@ -54,7 +51,7 @@ program.command('init')
       
         if(answers.approve === 'y') {
             if(controller && service && repositorie && entitie) {
-                reorganizeStructure(controller, service, repositorie, entitie)
+                reorganizeStructure(controller, service, repositorie, entitie);
             }
         }
     })
