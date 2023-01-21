@@ -20,19 +20,12 @@ function getFileNameToCreateFolderAndMove(
   }
   files.forEach((file) => {
     if (!file.includes('.ts')) return;
-    let fileName = file;
-    let patternName = patternNameFile;
-
-    if (addPatternName && !patternNameFile) {
-      fileName = `${file}.${addPatternName}`;
-      patternName = addPatternName;
-    }
-
     const localeFile = `${pathToCreate}/${file}`;
 
     const nameFormated = formatedNameToUseInFolderAndFile(
-      fileName,
-      patternName,
+      file,
+      patternNameFile,
+      addPatternName,
     );
 
     if(nameFormated){

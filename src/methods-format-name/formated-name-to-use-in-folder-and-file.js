@@ -3,6 +3,7 @@ const removeDotToAddDash = require('./remove-dot-to-add-dash')
 function formatedNameToUseInFolderAndFile(
   fileName,
   extensionNameWithoutDot,
+  addExtensionName
 ) {
   const fileNameToString = fileName.toString();
   let indexStartExtensionName;
@@ -40,10 +41,28 @@ function formatedNameToUseInFolderAndFile(
       };
     }
 
+    if(addExtensionName) {
+      fileFormated = removeDotToAddDash(fileNameWithOutExtension);
+
+      return {
+        fileWithExtension: `${fileFormated}.${addExtensionName}.ts`,
+        fileWithoutExtensionName: fileFormated,
+      };
+    }
+
     fileFormated = removeDotToAddDash(fileNameWithOutExtension);
 
     return {
       fileWithExtension: `${fileFormated}.ts`,
+      fileWithoutExtensionName: fileFormated,
+    };
+  }
+
+  if(addExtensionName) {
+    fileFormated = removeDotToAddDash(fileNameWithOutExtension);
+
+    return {
+      fileWithExtension: `${fileFormated}.${addExtensionName}.ts`,
       fileWithoutExtensionName: fileFormated,
     };
   }
