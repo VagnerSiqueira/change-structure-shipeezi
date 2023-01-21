@@ -12,7 +12,7 @@ function reorganizeStructure(folderNameController, folderNameService, folderName
   installDependencies();
   createFolders('routes', 'src');
   getFileNameToCreateFolderAndMove(`src/${folderNameRepositories}/${folderNameEntities}`);
-  getFileNameToCreateFolderAndMove(`src/${folderNameService}/bo`, `${folderNameService}`);
+  getFileNameToCreateFolderAndMove(`src/${folderNameService}/bo`, 'service');
   moveFoldersIn(`src/${folderNameService}/bo`, 'src/routes/');
   moveFoldersIn(`src/${folderNameRepositories}/${folderNameEntities}`, `src/${folderNameRepositories}`);
   moveFileToNewFolder(
