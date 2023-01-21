@@ -10,7 +10,7 @@ program.version(packageJson.version);
 let controller;
 let service;
 let repositorie;
-let entitie;
+let entity;
 
 program.command('init')
     .action(async () => {
@@ -50,11 +50,11 @@ program.command('init')
         controller = answers.controller;
         service = answers.service;
         repositorie = answers.repositorie;
-        entitie = answers.entitie;
+        entity = answers.entity;
       
         if(answers.approve === 'y') {
-            if(controller && service && repositorie && entitie) {
-                reorganizeStructure(controller, service, repositorie, entitie)
+            if(controller && service && repositorie && entity) {
+                reorganizeStructure(controller, service, repositorie, entity)
             }
         }
     })
