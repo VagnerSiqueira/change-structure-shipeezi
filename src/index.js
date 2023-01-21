@@ -30,14 +30,14 @@ program.command('init')
             {
                 type: 'input',
                 name: 'repositorie',
-                message: 'Name of the folder the repositorie are in: ',
+                message: 'Name of the parent folder that contains the entities folder: ',
                 validate: value => value ? true : 'Repositorie name is required!' 
             },
             {
                 type: 'input',
-                name: 'entitie',
-                message: 'Name of the folder the entitie are in: ',
-                validate: value => value ? true : 'Entitie name is required!' 
+                name: 'entity',
+                message: 'Name of the folder the entity are in: ',
+                validate: value => value ? true : 'Entity name is required!' 
             },
             {
                 type: 'input',

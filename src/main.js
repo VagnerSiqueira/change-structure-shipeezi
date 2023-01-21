@@ -11,7 +11,7 @@ const createModuleInFolderRoutes = require("./methods-file/create-module-in-fold
 function reorganizeStructure(folderNameController, folderNameService, folderNameRepositories, folderNameEntities) {
   installDependencies();
   createFolders('routes', 'src');
-  getFileNameToCreateFolderAndMove(`src/${folderNameRepositories}/${folderNameEntities}`);
+  getFileNameToCreateFolderAndMove(`src/${folderNameRepositories}/${folderNameEntities}`, null, 'entity');
   getFileNameToCreateFolderAndMove(`src/${folderNameService}/bo`, 'service');
   moveFoldersIn(`src/${folderNameService}/bo`, 'src/routes/');
   moveFoldersIn(`src/${folderNameRepositories}/${folderNameEntities}`, `src/${folderNameRepositories}`);

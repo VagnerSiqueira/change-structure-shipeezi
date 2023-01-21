@@ -8,6 +8,7 @@ const renameFile = require('./rename-file')
 function getFileNameToCreateFolderAndMove(
   relativePathToCreate,
   patternNameFile,
+  addPatternName,
 ) {
   const pathToCreate = path.resolve(relativePathToCreate);
   let files;
@@ -19,11 +20,16 @@ function getFileNameToCreateFolderAndMove(
   }
   files.forEach((file) => {
     if (!file.includes('.ts')) return;
+    let fileName = file;
+
+    if(addPatternName){
+      fileName = `${file}.${addPatternName}`
+    }
 
     const localeFile = `${pathToCreate}/${file}`;
 
     const nameFormated = formatedNameToUseInFolderAndFile(
-      file,
+      fileName,
       patternNameFile,
     );
 
