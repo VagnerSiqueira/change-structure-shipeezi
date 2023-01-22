@@ -14,11 +14,11 @@ function moveFolderToFolderPrivateService (oldPathService, newPathPrivateService
 
   folderInRoutes.forEach((folder) => {
     if(path.extname(folder)) return;
-    
+
     const pathSubFolderInRoute = path.resolve(`${oldPathService}/${folder}`);
     const subFolderInRoutes = fs.readdirSync(pathSubFolderInRoute);
     const haveController = subFolderInRoutes.filter((value) => value.includes('controller'));
-    if(!haveController) {
+    if(haveController.length === 0) {
       try {
         fsx.moveSync(pathSubFolderInRoute, path.resolve(`${newPathPrivateService}/${folder}`));
         console.log(`Moved ${folder} to private-services successfully!`);
