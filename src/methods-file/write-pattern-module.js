@@ -51,7 +51,7 @@ function writePatternModule(pathFolderHaveModule) {
     });
 
     if (!filePathModule) return;
-    console.log(filePathModule);
+
     const fileModule = fs.readFileSync(filePathModule, 'utf-8');
 
     const linesInFileModule = fileModule.split(/\r?\n/);
