@@ -8,6 +8,7 @@ const uninstallDepedencies = require("./resolve-dependecies/unistall-dependencie
 const moveControllersAndRename = require ("./methods-file/move-controllers-and-rename");
 const createModuleInFolderRoutes = require("./methods-file/create-module-in-folders-routes");
 const moveFolderToFolderPrivateService = require('./methods-folder/move-folder-to-private-services');
+const writePatternModule = require('./methods-file/write-pattern-module');
 
 function reorganizeStructure(folderNameController, folderNameService, folderNameRepositories, folderNameEntities) {
   installDependencies();
@@ -29,8 +30,9 @@ function reorganizeStructure(folderNameController, folderNameService, folderName
   moveControllersAndRename(`src/${folderNameController}`, 'src/routes');
   removeFolders(`src/${folderNameController}`);
   createModuleInFolderRoutes('src/routes');
+  writePatternModule('src/routes');
   createFolders('private-services', 'src');
-  moveFolderToFolderPrivateService('src/routes', 'src/private-services')
+  moveFolderToFolderPrivateService('src/routes', 'src/private-services');
   uninstallDepedencies();
 }
 
