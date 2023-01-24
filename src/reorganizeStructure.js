@@ -14,7 +14,7 @@ const fileCompareReturn = require('./check-changes/file-compare-return');
 
 function reorganizeStructure(folderNameController, folderNameService, folderNameRepositories, folderNameEntities) {
   installDependencies();
-  const countOldFiles = checkChangesStructure(folderNameController, folderNameService, folderNameRepositories, true);
+  const countOldFiles = checkChangesStructure(folderNameController, folderNameService, folderNameRepositories, folderNameEntities, true);
   createFolders('routes', 'src');
   getFileNameToCreateFolderAndMove(`src/${folderNameRepositories}/${folderNameEntities}`, null, 'entity');
   getFileNameToCreateFolderAndMove(`src/${folderNameService}/bo`, 'service');
