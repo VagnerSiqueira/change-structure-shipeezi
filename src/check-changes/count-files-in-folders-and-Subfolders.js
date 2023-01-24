@@ -15,10 +15,11 @@ function countFilesInFoldersAndSubFolders(pathFolder, oldStructure = true, typeF
     if(!oldStructure && typeFile) {
       const folders = fs.readdirSync(pathFolderRelative);
       folders.forEach((subFolder) => {
-        if(path.extname(subFolder)) return;
-        const files = fs.readdirSync(path.resolve(`${pathFolderRelative}/${subFolder}`));
-        const filesNotModule = files.filter((file) => file.includes(typeFile) && !file.includes('module'));
-        count += filesNotModule.length;
+        if(!path.extname(subFolder)){
+          const files = fs.readdirSync(path.resolve(`${pathFolderRelative}/${subFolder}`));
+          const filesNotModule = files.filter((file) => file.includes(typeFile) && !file.includes('module'));
+          count += filesNotModule.length;
+        }
       });
     }
 
