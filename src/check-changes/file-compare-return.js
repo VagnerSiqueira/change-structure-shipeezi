@@ -1,9 +1,12 @@
 const Status = require('./status-file'); 
 
 function fileCompareReturn(oldStructure, newStructure) {
-  const countControllers = oldStructure[0] - newStructure[0];
-  const countServices = oldStructure[1] - newStructure[1];
-  const countEntities = oldStructure[2] - newStructure[2];
+  console.log(oldStructure);
+  console.log(newStructure);
+  
+  const countControllers = Number(oldStructure[0]) - Number(newStructure[0]);
+  const countServices = Number(oldStructure[1]) - Number(newStructure[1]);
+  const countEntities = Number(oldStructure[2]) - Number(newStructure[2]);
 
   let filesFailedOrSuccess = {};
   

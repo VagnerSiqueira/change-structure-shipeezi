@@ -10,10 +10,9 @@ function countFilesInFoldersAndSubFolders(pathFolder, oldStructure, typeFile) {
       const files = fs.readdirSync(pathFolderRelative);
       const filesNotModule = files.filter((file) => !file.includes('module'));
       count = Number(filesNotModule.length);
-      console.log(count)
     }
   
-    if(!oldStructure && typeFile) {
+    if(!oldStructure) {
       const folders = fs.readdirSync(pathFolderRelative);
       folders.forEach((subFolder) => {
         if(!path.extname(subFolder)){
