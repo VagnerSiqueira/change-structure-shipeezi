@@ -11,10 +11,9 @@ function checkChangesStructure(folderNameController, folderNameService, folderNa
  else {
   const controllers = countFiles(`src/routes`, oldStructure, 'controller');
   const services = countFiles(`src/routes`, oldStructure, 'service');
-  const privateServices = countFiles(`src/private-services`, oldStructure, 'service');
   const entities = countFiles(`src/${folderNameRepositories}`, oldStructure, 'entity');
 
-  return [controllers, services + privateServices, entities]
+  return [controllers, services, entities]
  }
 }
 

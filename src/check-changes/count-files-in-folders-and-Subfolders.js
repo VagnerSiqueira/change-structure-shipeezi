@@ -9,7 +9,8 @@ function countFilesInFoldersAndSubFolders(pathFolder, oldStructure, typeFile) {
     if(oldStructure) {
       const files = fs.readdirSync(pathFolderRelative);
       const filesNotModule = files.filter((file) => !file.includes('module'));
-      count = filesNotModule.length;
+      count = Number(filesNotModule.length);
+      console.log(count)
     }
   
     if(!oldStructure && typeFile) {
@@ -19,6 +20,7 @@ function countFilesInFoldersAndSubFolders(pathFolder, oldStructure, typeFile) {
           const files = fs.readdirSync(path.resolve(`${pathFolderRelative}/${subFolder}`));
           const filesNotModule = files.filter((file) => file.includes(typeFile) && !file.includes('module'));
           count += filesNotModule.length;
+          console.log(count)
         }
       });
     }
