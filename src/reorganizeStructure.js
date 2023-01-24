@@ -11,35 +11,42 @@ const moveFolderToFolderPrivateService = require('./methods-folder/move-folder-t
 const writePatternModule = require('./methods-file/write-pattern-module');
 const checkChangesStructure = require('./check-changes/check-changes-structure');
 const fileCompareReturn = require('./check-changes/file-compare-return');
+const child = require('child_process');
 
 function reorganizeStructure(folderNameController, folderNameService, folderNameRepositories, folderNameEntities) {
-  installDependencies();
-  const countOldFiles = checkChangesStructure(folderNameController, folderNameService, folderNameRepositories, folderNameEntities, true);
-  createFolders('routes', 'src');
-  getFileNameToCreateFolderAndMove(`src/${folderNameRepositories}/${folderNameEntities}`, null, 'entity');
-  getFileNameToCreateFolderAndMove(`src/${folderNameService}/bo`, 'service');
-  moveFoldersIn(`src/${folderNameService}/bo`, 'src/routes/');
-  moveFoldersIn(`src/${folderNameRepositories}/${folderNameEntities}`, `src/${folderNameRepositories}`);
-  moveFileToNewFolder(
-    `src/${folderNameService}/abstract.service.ts`,
-    'src/routes/abstract.service.ts',
-  );
-  moveFileToNewFolder(
-    `src/${folderNameService}/service.module.ts`,
-    'src/routes/routes.module.ts',
-  );
-  removeFolders(`src/${folderNameRepositories}/${folderNameEntities}`);
-  removeFolders(`src/${folderNameService}`);
-  moveControllersAndRename(`src/${folderNameController}`, 'src/routes');
-  removeFolders(`src/${folderNameController}`);
-  const countNewfiles = checkChangesStructure(null, null, folderNameRepositories, null, false);
-  createModuleInFolderRoutes('src/routes');
-  writePatternModule('src/routes');
-  createFolders('private-services', 'src');
-  moveFolderToFolderPrivateService('src/routes', 'src/private-services');
-  uninstallDepedencies();
-
-  return fileCompareReturn(countOldFiles, countNewfiles);
+  try {
+    child.execSync('git add .');
+    installDependencies();
+    const countOldFiles = checkChangesStructure(folderNameController, folderNameService, folderNameRepositories, folderNameEntities, true);
+    createFolders('routes', 'src');
+    getFileNameToCreateFolderAndMove(`src/${folderNameRepositories}/${folderNameEntities}`, null, 'entity');
+    getFileNameToCreateFolderAndMove(`src/${folderNameService}/bo`, 'service');
+    moveFoldersIn(`src/${folderNameService}/bo`, 'src/routes/');
+    moveFoldersIn(`src/${folderNameRepositories}/${folderNameEntities}`, `src/${folderNameRepositories}`);
+    moveFileToNewFolder(
+      `src/${folderNameService}/abstract.service.ts`,
+      'src/routes/abstract.service.ts',
+    );
+    moveFileToNewFolder(
+      `src/${folderNameService}/service.module.ts`,
+      'src/routes/routes.module.ts',
+    );
+    removeFolders(`src/${folderNameRepositories}/${folderNameEntities}`);
+    removeFolders(`src/${folderNameService}`);
+    moveControllersAndRename(`src/${folderNameController}`, 'src/routes');
+    removeFolders(`src/${folderNameController}`);
+    const countNewfiles = checkChangesStructure(null, null, folderNameRepositories, null, false);
+    createModuleInFolderRoutes('src/routes');
+    writePatternModule('src/routes');
+    createFolders('private-services', 'src');
+    moveFolderToFolderPrivateService('src/routes', 'src/private-services');
+    uninstallDepedencies();
+  
+    return fileCompareReturn(countOldFiles, countNewfiles);
+  } catch (error) {
+    child.execSync('git checkout .');
+    child.execSync('git clean -f -d');
+  }
 }
 
 module.exports = reorganizeStructure;
