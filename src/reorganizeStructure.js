@@ -32,7 +32,7 @@ function reorganizeStructure(folderNameController, folderNameService, folderName
   removeFolders(`src/${folderNameService}`);
   moveControllersAndRename(`src/${folderNameController}`, 'src/routes');
   removeFolders(`src/${folderNameController}`);
-  const countNewfiles = checkChangesStructure(folderNameController, folderNameService, folderNameRepositories, null, false);
+  const countNewfiles = checkChangesStructure(null, null, folderNameRepositories, null, false);
   createModuleInFolderRoutes('src/routes');
   writePatternModule('src/routes');
   createFolders('private-services', 'src');

@@ -1,7 +1,7 @@
 const path = require('path')
 const countFilesInFoldersAndSubFolders = require('./count-files-in-folders-and-Subfolders');
 
-function countFiles(pathFolder, oldStructure = true, typeFile) {
+function countFiles(pathFolder, oldStructure, typeFile) {
   try {
     const pathFolderRelative = path.resolve(pathFolder);
     let count = 0;

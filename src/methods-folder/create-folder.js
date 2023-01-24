@@ -11,7 +11,10 @@ function createFolders(folderName, relativePath) {
     
     return `${relativePathToCreate}/${folderName}`;
   } catch (error) {
-    throw new Error(`Create folder ${folderName} failed`);
+    if(error.message !== 'dest already exists') {
+      throw new Error(`Create folder ${folderName} failed`);
+    }
+    else console.log(error.message);
   }
 }
 
