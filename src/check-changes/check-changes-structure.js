@@ -3,7 +3,7 @@ const countFiles = require('./count-files');
 function checkChangesStructure(folderNameController, folderNameService, folderNameRepositories, folderNameEntity, oldStructure) {
  if(oldStructure) {
   const controllers = countFiles(`src/${folderNameController}`, oldStructure);
-  const services = countFiles(`src/bo/${folderNameService}`, oldStructure);
+  const services = countFiles(`src/${folderNameService}/bo`, oldStructure);
   const entities = countFiles(`src/${folderNameRepositories}/${folderNameEntity}`, oldStructure);
 
   return [controllers, services, entities]
