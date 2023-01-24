@@ -9,9 +9,12 @@ const moveControllersAndRename = require ("./methods-file/move-controllers-and-r
 const createModuleInFolderRoutes = require("./methods-file/create-module-in-folders-routes");
 const moveFolderToFolderPrivateService = require('./methods-folder/move-folder-to-private-services');
 const writePatternModule = require('./methods-file/write-pattern-module');
+const checkChangesStructure = require('./check-changes/check-changes-structure');
+const fileCompareReturn = require('./check-changes/file-compare-return');
 
 function reorganizeStructure(folderNameController, folderNameService, folderNameRepositories, folderNameEntities) {
   installDependencies();
+  const countOldFiles = checkChangesStructure(folderNameController, folderNameService, folderNameRepositories, true);
   createFolders('routes', 'src');
   getFileNameToCreateFolderAndMove(`src/${folderNameRepositories}/${folderNameEntities}`, null, 'entity');
   getFileNameToCreateFolderAndMove(`src/${folderNameService}/bo`, 'service');
@@ -29,11 +32,14 @@ function reorganizeStructure(folderNameController, folderNameService, folderName
   removeFolders(`src/${folderNameService}`);
   moveControllersAndRename(`src/${folderNameController}`, 'src/routes');
   removeFolders(`src/${folderNameController}`);
+  const countNewfiles = checkChangesStructure(folderNameController, folderNameService, folderNameRepositories, null, false);
   createModuleInFolderRoutes('src/routes');
   writePatternModule('src/routes');
   createFolders('private-services', 'src');
   moveFolderToFolderPrivateService('src/routes', 'src/private-services');
   uninstallDepedencies();
+
+  return fileCompareReturn(countOldFiles, countNewfiles);
 }
 
 module.exports = reorganizeStructure;

@@ -3,7 +3,9 @@
 const program = require('commander');
 const inquirer = require('inquirer');
 const packageJson = require('../package.json');
-const reorganizeStructure = require('./main.js');
+const reorganizeStructure = require('./reorganizeStructure');
+const Status = require('./check-changes/status-file');
+const chalk = require('chalk');
 
 program.version(packageJson.version);
 
@@ -54,7 +56,13 @@ program.command('init')
       
         if(answers.approve === 'y') {
             if(controller && service && repositorie && entity) {
-                reorganizeStructure(controller, service, repositorie, entity)
+                const fileCompareReturn = reorganizeStructure(controller, service, repositorie, entity);
+                if(fileCompareReturn.controller === Status.SUCCESS) console.log(`${chalk.green} Controllers: ${Status.SUCCESS}`);
+                if(fileCompareReturn.controller === Status.FAILED) console.log(`${chalk.red} Controllers: ${Status.FAILED}`);
+                if(fileCompareReturn.service === Status.SUCCESS) console.log(`${chalk.green} Services: ${Status.SUCCESS}`);
+                if(fileCompareReturn.service === Status.FAILED) console.log(`${chalk.red} Services: ${Status.FAILED}`);
+                if(fileCompareReturn.entity === Status.SUCCESS) console.log(`${chalk.green} Entities: ${Status.SUCCESS}`);
+                if(fileCompareReturn.entity === Status.FAILED) console.log(`${chalk.red} Entites: ${Status.FAILED}`);
             }
         }
     })
