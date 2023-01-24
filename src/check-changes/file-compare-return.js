@@ -7,10 +7,12 @@ function fileCompareReturn(oldStructure, newStructure) {
 
   let filesFailedOrSuccess = {};
   
-  countControllers > 0 ? filesFailedOrSuccess.controller = Status.FAILED : filesFailedOrSuccess.controller = Status.SUCCESS
-  countServices > 0 ? filesFailedOrSuccess.service = Status.FAILED : filesFailedOrSuccess.service = Status.SUCCESS
-  countEntities > 0 ? filesFailedOrSuccess.entity = Status.FAILED : filesFailedOrSuccess.entity = Status.SUCCESS
+  countControllers === 0 ? filesFailedOrSuccess.controller = Status.SUCCESS : filesFailedOrSuccess.controller = Status.FAILED;
+  countServices === 0 ? filesFailedOrSuccess.service = Status.SUCCESS : filesFailedOrSuccess.service = Status.FAILED;
+  countEntities === 0 ? filesFailedOrSuccess.entity = Status.SUCCESS : filesFailedOrSuccess.entity = Status.FAILED;
 
+  console.log(countControllers, countServices, countEntities);
+  
   return filesFailedOrSuccess;
 }
 
